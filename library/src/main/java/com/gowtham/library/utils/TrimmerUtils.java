@@ -201,20 +201,24 @@ public class TrimmerUtils {
     }
 
     public static String getLimitedTimeFormatted(long secs){
-            long hours = secs / 3600;
-            long secondsLeft = secs - hours * 3600;
-            long minutes = secondsLeft / 60;
-            long seconds = secondsLeft - minutes * 60;
-            String time;
-            if (hours!=0){
-                time=hours+" Hrs "+(minutes!=0 ? minutes+" Mins " : "")+
-                        (seconds!=0 ? seconds+" Secs " : "");
-            }else if (minutes!=0)
-                time=minutes+" Mins "+(seconds!=0 ? seconds+" Secs ":"");
+        long hours = secs / 3600;
+        long secondsLeft = secs - hours * 3600;
+        long minutes = secondsLeft / 60;
+        long seconds = secondsLeft - minutes * 60;
+        String time;
+
+        String hoursText = " 小時 ";//" Hrs "
+        String minsText = " 分鐘 "; // " Mins "
+        String secsText = " 秒 ";
+        if (hours != 0) {
+            time = hours + hoursText + (minutes != 0 ? minutes + minsText : "") +
+                    (seconds != 0 ? seconds + secsText : "");
+        } else if (minutes != 0)
+            time = minutes + " Mins " + (seconds != 0 ? seconds + secsText : "");
             else
-                time=seconds+" Secs ";
-            LogMessage.v(time);
-            return time;
+        time = seconds + secsText;
+        LogMessage.v(time);
+        return time;
     }
 
     public static String clearNull(String value) {
