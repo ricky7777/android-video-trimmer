@@ -214,7 +214,7 @@ public class TrimmerUtils {
             time = hours + hoursText + (minutes != 0 ? minutes + minsText : "") +
                     (seconds != 0 ? seconds + secsText : "");
         } else if (minutes != 0)
-            time = minutes + " Mins " + (seconds != 0 ? seconds + secsText : "");
+            time = minutes + minsText + (seconds != 0 ? seconds + secsText : "");
             else
         time = seconds + secsText;
         LogMessage.v(time);
